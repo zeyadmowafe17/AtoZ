@@ -1,0 +1,22 @@
+[build]
+builder = "nixpacks"
+
+[build.commands]
+build = "pip install -r requirements.txt"
+
+[deploy]
+startCommand = "uvicorn main:app --host 0.0.0.0 --port $PORT"
+numReplicas = 1
+
+[deploy.healthCheckPath]
+path = "/health"
+timeout = 30
+
+[variables]
+SUPABASE_URL = "https://trdzdoopjudierbswokn.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRyZHpkb29wanVkaWVyYnN3b2tuIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1OTY1MjI2MSwiZXhwIjoyMDc1MjI4MjYxfQ.hwFxz6Vl25iVtU1nibS4f0hehVU-Tl2QfU57Z56VgXQ"
+ENVIRONMENT = "production"
+MAX_FILE_SIZE = "5242880"
+RATE_LIMIT_REQUESTS = "100"
+RATE_LIMIT_WINDOW = "60"
+ALLOWED_ORIGINS = "http://localhost:3000"
